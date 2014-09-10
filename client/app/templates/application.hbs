@@ -1,0 +1,14 @@
+{{#if session.isAuthenticated}}
+  <a {{ action 'invalidateSession' }}>Logout</a>
+{{else}}
+  {{#link-to 'login'}}Login{{/link-to}}
+{{/if}}
+<br/>
+<h2 id='title'>Welcome to Ember.js</h2>
+{{#link-to 'index'}}Home{{/link-to}}
+{{#link-to 'testmodel'}}TestModel{{/link-to}}
+{{#link-to 'testrestrictedmodel'}}TestRestricted{{/link-to}}
+{{#link-to 'apirequests'}}API Test{{/link-to}}
+
+{{outlet}}
+

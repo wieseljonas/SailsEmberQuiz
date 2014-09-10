@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sailsember</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/sailsember.css">
+  </head>
+  <body>
+    <script>
+      window.SailsemberENV = {{ENV}};
+      window.EmberENV = window.SailsemberENV.EmberENV;
+      window.ENV = window.SailsemberENV;
+      window.ENV = window.ENV || {};
+      window.ENV['simple-auth'] = {
+        authorizer: 'authorizer:token',
+        crossOriginWhitelist: ['http://localhost:1337/']
+      };
+      window.ENV['simple-auth-token'] = {
+        serverTokenEndpoint: 'http://localhost:1337/api/v1/login',
+        authorizationPrefix: '',
+        tokenPropertyName: 'token',
+        authorizationHeaderName: 'access_token'
+      };
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/sailsember.js"></script>
+    <script>
+      window.Sailsember = require('sailsember/app')['default'].create(SailsemberENV.APP);
+    </script>
+  </body>
+</html>
